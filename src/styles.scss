@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+
+
+html, body { height: 100%; }
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: rgb(40, 40, 40);
+    color: white;
+}
+
+.mat-grid-tile-content {
+    right: auto !important;
+}
+
+.mat-mdc-form-field-subscript-wrapper {
+    display: none !important;
+}
+
+.col {
+    padding: 2em !important;
+}
+body {
+
+}
+

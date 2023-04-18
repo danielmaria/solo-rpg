@@ -1,0 +1,13 @@
+Oracle
+
+<div class="card-container">
+
+<ng-container *ngFor="let oracle of oracles">
+  <button class="card card-small" tabindex="0"
+          matTooltip="{{oracle.description.split('.')[0]}}"
+          (click)="openDialog(oracle)">
+    <mat-icon>{{oracle.icon}}</mat-icon>
+    <span>{{oracle.name}}</span>
+  </button>
+</ng-container>
+</div>

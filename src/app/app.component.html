@@ -1,0 +1,40 @@
+<p>
+  <mat-toolbar>
+    <button mat-icon-button class="icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Solo RPG</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="icon favorite-icon">
+      <mat-icon>save</mat-icon>
+    </button>
+    <button mat-icon-button class="icon">
+      <mat-icon>upload</mat-icon>
+    </button>
+  </mat-toolbar>
+</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-9">
+      <app-journal></app-journal>
+    </div>
+    <div class="col">
+      <app-oracle (items)="addItem($event)"></app-oracle>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5">
+    <app-character></app-character>
+    </div>
+    <div class="col">
+      <app-notebook></app-notebook>
+    </div>
+    <div class="col-3">
+      <app-inventory [itemList]="items"></app-inventory>
+    </div>
+  </div>
+  <div class="row">
+    <app-logs></app-logs>
+  </div>
+</div>

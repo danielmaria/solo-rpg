@@ -1,0 +1,11 @@
+Inventory
+<div class="row">
+  <div class="col-9 text-center">Name</div>
+  <div class="col-3 text-center">Actions</div>
+  <ng-container *ngFor="let object of itemList">
+    <div class="col-9">{{object}}</div>
+    <div class="col-3 icons">
+      <mat-icon matTooltip="Delete item" (click)="deleteItem(object)">delete</mat-icon>
+    </div>
+  </ng-container>
+</div>

@@ -1,0 +1,21 @@
+<div class="container character-infos">
+    <div class="row character-occupational">
+        <small>{{character.occupational}}</small>
+    </div>
+    <div class="row">
+        <span class="character-name">{{character.name}}</span>
+    </div>
+    <div class="row">
+        Health
+        <ng-container *ngFor="let health of [].constructor(character.health)">
+            <mat-icon>favorite</mat-icon>
+        </ng-container>
+    </div>
+    <div class="row">
+        Sanity
+        <ng-container *ngFor="let health of [].constructor(character.sanity)">
+            <mat-icon>bolt</mat-icon>
+        </ng-container>
+    </div>
+    <div class="row character-background">Background: {{character.background}} </div>
+</div>
