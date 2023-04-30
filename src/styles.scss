@@ -4,9 +4,13 @@
 @import 'bootstrap/scss/bootstrap';
 
 
-html, body { height: 100%; }
-body { 
-    margin: 0; 
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     background-color: rgb(40, 40, 40);
     color: white;
@@ -23,7 +27,20 @@ body {
 .col {
     padding: 2em !important;
 }
-body {
 
+.oracle-dialog {
+    color: black;
+    padding: 1em;
+    max-width: 80em;
 }
 
+
+.result {
+    text-align: center;
+    font-size: 3em;
+}
+
+.roll-button {
+    margin: 2em auto 0 auto;
+    display: flex;
+}

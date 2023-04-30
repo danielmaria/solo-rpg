@@ -1,6 +1,8 @@
 import { AfterContentInit, Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LogService, Log } from 'src/app/services/log.service';
+import { NpcOracleDialogComponent } from './dialogs/npc-oracle-dialog/npc-oracle-dialog.component';
+import { SimpleOracleDialogComponent } from './dialogs/simple-oracle-dialog/simple-oracle-dialog.component';
 
 interface OracleMenu {
   id: string,
@@ -48,7 +50,7 @@ const oraclesMenu: OracleMenu[] = [
     id: 'weapons', 
     name: 'Firearm', 
     description: 'When you are in a place where there are possibly some firearms and you intend to look for them. Ex: "I enter a farm. There is no one in the house, so I look for weapons"', 
-    icon: 'build', 
+    icon: 'rocket', 
     options: ['Just a few gun shells', 'Old revolver with 3 bullets', 'Old revolver with loaded, but rusty', 'Taser', 'Pistol semi-automatic without bullets', 'Pepper spray', 'Fully loaded semi-automatic pistol', 'Old 2WW Rifle with a couple of bullets', 'Hunting rifle with bullets'],
     saveable: true
   },
@@ -91,10 +93,21 @@ export class OracleComponent {
 
   constructor(private logService: LogService, public dialog: MatDialog){}
 
+  openDialogNPC(): void {
+    let enterAnimationDuration = 300
+    let exitAnimationDuration = 1000
+    const dialogRef = this.dialog.open(NpcOracleDialogComponent, {
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data: {
+      }
+    });
+  }
+
   openDialog(oracle: any): void {
     let enterAnimationDuration = 300
     let exitAnimationDuration = 1000
-    const dialogRef = this.dialog.open(DialogAnimationsExampleDialog, {
+    const dialogRef = this.dialog.open(SimpleOracleDialogComponent, {
       enterAnimationDuration,
       exitAnimationDuration,
       data: {
@@ -115,51 +128,4 @@ export class OracleComponent {
       this.items.next(result)
     });
   }
-}
-
-@Component({
-  selector: 'dialog-animations-example-dialog',
-  templateUrl: 'dialogs/dialog-animations-example-dialog.html',
-  styleUrls: ['./oracle.component.scss']
-})
-export class DialogAnimationsExampleDialog {
-
-  @Output() submitClicked = new EventEmitter<any>();
-  @Output() items = new EventEmitter<any>();
-
-  constructor(public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>, 
-              @Inject(MAT_DIALOG_DATA) public data: any) {
-      this.dialogTitle = data.oracle.name
-      this.dialogText = data.oracle.description
-  }
-  
-  dialogTitle: string = "";
-  dialogText: string = "";
-  dialogResult: string | undefined = undefined;
-
-  save() {
-    let data = ""
-    if (this.data.oracle.saveable) {
-      this.items.emit(this.dialogResult);
-      data = `Your found "${this.dialogResult}" using the oracle "${this.dialogTitle}"`;
-    } else {
-      data = `Your result was "${this.dialogResult}" in the oracle "${this.dialogTitle}"`;
-    }
-    this.submitClicked.emit(data);
-    this.dialogRef.close();
-  }
-
-  closeDialog() {
-    this.dialogRef.close();
-  }
-
-  roll() {
-    let dice = this.getRandomInt(this.data.oracle.options.length)
-    this.dialogResult = this.data.oracle.options[dice]
-  }
-
-  private getRandomInt(max: number) {
-    return Math.floor(Math.random() * max);
-  }
-  
 }

@@ -1,21 +1,65 @@
 <div class="container character-infos">
     <div class="row character-occupational">
-        <small>{{character.occupational}}</small>
+        <small>{{character?.occupational?.name}}</small>
     </div>
     <div class="row">
-        <span class="character-name">{{character.name}}</span>
+        <span class="character-name">{{character?.name}}</span>
     </div>
     <div class="row">
         Health
-        <ng-container *ngFor="let health of [].constructor(character.health)">
-            <mat-icon>favorite</mat-icon>
+        <ng-container *ngFor="let health of [].constructor(1,2,3,4,5,6,7,8,9,10); let i = index">
+            <mat-icon [ngClass]="{'active-icon' : character?.health! > i}"
+                (click)="addHealth(character?.health! <= i)"
+                matTooltip="{{character?.health! <= i ? '+1 health point' : '-1 health point'}}"
+                class="icon">
+                favorite
+            </mat-icon>
         </ng-container>
     </div>
     <div class="row">
         Sanity
-        <ng-container *ngFor="let health of [].constructor(character.sanity)">
-            <mat-icon>bolt</mat-icon>
+        <ng-container *ngFor="let health of [].constructor(1,2,3,4,5,6,7,8,9,10); let i = index">
+            <mat-icon 
+                [ngClass]="{'active-icon' : character?.sanity! > i}"
+                (click)="addSanity(character?.sanity! <= i)"
+                matTooltip="{{character?.sanity! <= i ? '+1 sanity point' : '-1 sanity point'}}"
+                class="icon">
+                bolt
+            </mat-icon>
         </ng-container>
     </div>
-    <div class="row character-background">Background: {{character.background}} </div>
+    <div class="row character-background">Background: {{character?.background}} </div>
+    <div class="row">
+        <div class="col-4 text-center status-info" 
+             matTooltip="{{character?.occupational?.status?.physical}}/5 Click to roll an action"
+             (click)="openStatusDialog('Physical', character?.occupational?.status?.physical!)">
+            <span>Physical</span><br>
+            <mat-icon [ngClass]="{'active-icon' : character?.occupational?.status?.physical! >= 1}" class="icon">sports_martial_arts</mat-icon>
+            <mat-icon [ngClass]="{'active-icon' : character?.occupational?.status?.physical! >= 2}" class="icon">sports_martial_arts</mat-icon>
+            <mat-icon [ngClass]="{'active-icon' : character?.occupational?.status?.physical! >= 3}" class="icon">sports_martial_arts</mat-icon>
+            <mat-icon [ngClass]="{'active-icon' : character?.occupational?.status?.physical! >= 4}" class="icon">sports_martial_arts</mat-icon>
+            <mat-icon [ngClass]="{'active-icon' : character?.occupational?.status?.physical! >= 5}" class="icon">sports_martial_arts</mat-icon>
+        </div>
+        <div class="col-4 text-center status-info" 
+             matTooltip="{{character?.occupational?.status?.intellectual}}/5 Click to roll an action"
+             (click)="openStatusDialog('Intellectual', character?.occupational?.status?.intellectual!)">
+            <span>Intellectual</span><br>
+            <mat-icon [ngClass]="{'active-icon' : character?.occupational?.status?.intellectual! >= 1}" class="icon">lightbulb</mat-icon>
+            <mat-icon [ngClass]="{'active-icon' : character?.occupational?.status?.intellectual! >= 2}" class="icon">lightbulb</mat-icon>
+            <mat-icon [ngClass]="{'active-icon' : character?.occupational?.status?.intellectual! >= 3}" class="icon">lightbulb</mat-icon>
+            <mat-icon [ngClass]="{'active-icon' : character?.occupational?.status?.intellectual! >= 4}" class="icon">lightbulb</mat-icon>
+            <mat-icon [ngClass]="{'active-icon' : character?.occupational?.status?.intellectual! >= 5}" class="icon">lightbulb</mat-icon>
+        </div>
+        <div class="col-4 text-center status-info"
+        matTooltip="{{character?.occupational?.status?.social}}/5 Click to roll an action"
+        (click)="openStatusDialog('Social', character?.occupational?.status?.social!)">
+            <span>Social</span><br>
+            <mat-icon [ngClass]="{'active-icon' : character?.occupational?.status?.social! >= 1}" class="icon">gavel</mat-icon>
+            <mat-icon [ngClass]="{'active-icon' : character?.occupational?.status?.social! >= 2}" class="icon">gavel</mat-icon>
+            <mat-icon [ngClass]="{'active-icon' : character?.occupational?.status?.social! >= 3}" class="icon">gavel</mat-icon>
+            <mat-icon [ngClass]="{'active-icon' : character?.occupational?.status?.social! >= 4}" class="icon">gavel</mat-icon>
+            <mat-icon [ngClass]="{'active-icon' : character?.occupational?.status?.social! >= 5}" class="icon">gavel</mat-icon>
+        </div>
+    </div>
+
 </div>

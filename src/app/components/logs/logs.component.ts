@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Log, LogService } from 'src/app/services/log.service';
 
 @Component({
@@ -8,10 +8,9 @@ import { Log, LogService } from 'src/app/services/log.service';
 })
 export class LogsComponent {
 
-  logs: Log[]
+  @Input() logs: string[] = []
 
   constructor(private logService: LogService){
-    this.logs = this.logService.getLogs();
   }
 
 }

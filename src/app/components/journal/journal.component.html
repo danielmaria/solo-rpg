@@ -1,5 +1,8 @@
 Journal
 
 <mat-form-field appearance="fill" class="journal-text-area" >
-    <textarea matInput rows="20"></textarea>
+    <textarea 
+        matInput rows="20" value="{{journal}}" 
+        (ngModelChange)="editJournal($event)" 
+        [ngModel]="journal"></textarea>
 </mat-form-field>

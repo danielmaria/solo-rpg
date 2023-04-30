@@ -8,4 +8,8 @@ Inventory
       <mat-icon matTooltip="Delete item" (click)="deleteItem(object)">delete</mat-icon>
     </div>
   </ng-container>
+
+  <div *ngIf="itemList?.length === 0" class="text-center any-item-message">
+    You don't have any item yet
+  </div>
 </div>

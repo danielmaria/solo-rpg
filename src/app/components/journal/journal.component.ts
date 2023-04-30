@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-journal',
@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./journal.component.scss']
 })
 export class JournalComponent {
+  @Input() journal: string = ""
+  @Output() journalEvent = new EventEmitter<String>();
+
+  editJournal(change: any) {
+    this.journalEvent.next(change)
+  }
 
 }

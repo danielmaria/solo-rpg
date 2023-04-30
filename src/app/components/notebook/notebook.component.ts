@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-notebook',
@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./notebook.component.scss']
 })
 export class NotebookComponent {
+  @Input() notebook: string = ""
+  @Output() notebookEvent = new EventEmitter<String>();
+
+  editNotebook(change: any) {
+    this.notebookEvent.next(change)
+  }
 
 }

@@ -1,0 +1,16 @@
+<div class="oracle-dialog">
+
+    <h1 mat-dialog-title>Oracle for '{{dialogTitle}}'</h1>
+    <div mat-dialog-content>
+        {{dialogText}}
+    </div>
+    <div class="result" *ngIf="dialogResult !== undefined">
+        {{dialogResult}}
+    </div>
+    <button mat-button class="roll-button" (click)="roll()">Roll my future</button>
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close (click)="closeDialog()">Cancel</button>
+        <button mat-button mat-dialog-close cdkFocusInitial (click)="save()"
+            [disabled]="dialogResult === undefined">Accept my fate</button>
+    </div>
+</div>

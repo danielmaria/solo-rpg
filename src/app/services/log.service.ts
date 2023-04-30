@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { CharacterService } from './character.service';
 
 export class Log {
   date: Date;
@@ -17,15 +18,14 @@ export class LogService {
 
   private logs: Log[];
 
-  constructor() {
+  constructor(private characterService: CharacterService) {
     this.logs = []
   }
 
-  getLogs() {
-    return this.logs
-  }
-
   addLog(log: string) {
-    this.logs.push(new Log(new Date(), log))
+    const dateNow = new Date().toLocaleString('en-GB', {
+      hour12: false,
+    });
+    this.characterService.addLog(`${dateNow} - ${log}`)
   }
 }

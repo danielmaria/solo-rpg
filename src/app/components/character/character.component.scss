@@ -20,3 +20,29 @@
 .character-background {
     text-align: justify;
 }
+
+.icon svg {
+    fill: gray;
+}
+
+.icon {
+    color: gray;
+}
+
+.active-icon svg {
+    fill: green;
+}
+
+.active-icon {
+    color: green;
+}
+
+.row {
+    padding-top: .5em;
+}
+
+.status-info {
+    position: relative; 
+    cursor: pointer;
+}
+

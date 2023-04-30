@@ -1,0 +1,27 @@
+.character-dialog {
+    color: black;
+    padding: 1em;
+    background-color: white;
+    text-align: right;
+    div {
+        mat-form-field {
+            width: 100%;
+        }
+    }
+}
+
+.icon svg {
+    fill: gray;
+}
+
+.icon {
+    color: gray;
+}
+
+.active-icon svg {
+    fill: green;
+}
+
+.active-icon {
+    color: green;
+}
