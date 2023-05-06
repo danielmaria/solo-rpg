@@ -20,14 +20,10 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      # - name: Unit tests 🧪
-      #   run: |
-      #     npm install
-      #     npm test
       - name: Build 📦
         run: |
-          npm install
-          npm run-script deploy
+          npm install --force
+          npm run-script build
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
